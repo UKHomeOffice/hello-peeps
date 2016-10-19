@@ -1,0 +1,23 @@
+{
+  "name": "hello-peeps",
+  "version": "1.0.0",
+  "description": "testing for deployment of drone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UKHomeOffice/hello-peeps.git"
+  },
+  "author": "Sulthan Ahmed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UKHomeOffice/hello-peeps/issues"
+  },
+  "homepage": "https://github.com/UKHomeOffice/hello-peeps#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
