@@ -18,6 +18,7 @@ pipeline:
     commands:
       - docker login -u="sulthan_ahmed+testrobot" -p=${DOCKER_PASSWORD} quay.io
       - docker tag hello-peeps quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
+      - docker login -u="sulthan_ahmed+testrobot" -p=${DOCKER_PASSWORD} quay.io
       - docker push quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
     when:
       branch: master
