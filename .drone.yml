@@ -6,7 +6,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
-      - docker build -t image_name .
+      - docker build -t hello-peeps .
     when:
       branch: master
       event: push
@@ -17,7 +17,7 @@ pipeline:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
       - docker login -u="sulthan_ahmed+testrobot" -p=${DOCKER_PASSWORD} quay.io
-      - docker tag image_name quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
+      - docker tag hello-peeps quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
     when:
       branch: master
