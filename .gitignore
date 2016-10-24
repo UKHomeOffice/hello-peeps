@@ -3,7 +3,7 @@ logs
 *.log
 npm-debug.log*
 
-# IDEA
+# IntelliJ
 .idea/
 
 # Runtime data
