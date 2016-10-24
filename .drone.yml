@@ -23,10 +23,22 @@ pipeline:
       branch: master
       event: push
 
+  image_to_artifactory:
+    image: docker:1.11
+    environment:
+      - DOCKER_HOST=tcp://127.0.0.1:2375
+    commands:
+      - docker login -u="regt-build-bot" -p=${DOCKER_ARTIFACTORY_PASSWORD} docker.digital.homeoffice.gov.uk
+      - docker tag hello-peeps docker.digital.homeoffice.gov.uk/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
+      - docker push docker.digital.homeoffice.gov.uk/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
+    when:
+      branch: master
+      event: push
+
   deploy-to-preprod:
     image: busybox
     commands:
-      - /bin/echo hello preprod
+      - /bin/echo hello preprod ${NAME}
     when:
       environment: preprod
       event: deployment
