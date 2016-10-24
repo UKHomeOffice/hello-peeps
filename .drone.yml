@@ -23,6 +23,14 @@ pipeline:
       branch: master
       event: push
 
+  deploy-to-preprod:
+    image: busybox
+    commands:
+      - /bin/echo hello preprod
+    when:
+      environment: preprod
+      event: deployment
+
 services:
   dind:
     image: docker:1.11-dind
