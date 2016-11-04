@@ -9,7 +9,7 @@ RUN yum clean all && \
 
 COPY . /app
 #RUN npm install
-# install yarn
+# install yarn 
 RUN npm i -g yarn
 RUN yarn install
 
