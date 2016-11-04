@@ -8,5 +8,8 @@ services:
 before_install:
   - docker build --tag travis .
 
+install:
+- true
+
 script:
   - true
