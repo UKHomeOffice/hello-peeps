@@ -9,7 +9,7 @@ pipeline:
       - docker build -t hello-peeps .
     when:
       branch: master
-      event: push
+      event: [push, pull_request]
 
   pr-builder:
     privileged: true
