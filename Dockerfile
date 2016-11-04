@@ -8,6 +8,9 @@ RUN yum clean all && \
   npm --loglevel warn install -g npm@3
 
 COPY . /app
-RUN npm install
+#RUN npm install
+# install yarn
+RUN npm i -g yarn
+RUN yarn install
 
 CMD npm start
