@@ -9,7 +9,17 @@ pipeline:
       - docker build -t hello-peeps .
     when:
       branch: master
-      event: push
+      event: [push, pull_request]
+
+  pr-builder:
+    privileged: true
+    image: docker:1.11
+    environment:
+      - DOCKER_HOST=tcp://127.0.0.1:2375
+    commands:
+      - docker build -t hello-peeps .
+    when:
+      event: [push, pull_request]
 
   image_to_quay:
     image: docker:1.11
@@ -21,7 +31,7 @@ pipeline:
       - docker push quay.io/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
     when:
       branch: master
-      event: push
+      event: [push, pull_request]
 
   image_to_artifactory:
     image: docker:1.11
@@ -33,7 +43,7 @@ pipeline:
       - docker push docker.digital.homeoffice.gov.uk/ukhomeofficedigital/hello-peeps:${DRONE_COMMIT_SHA}
     when:
       branch: master
-      event: push
+      event: [push, pull_request]
 
   deploy-to-preprod:
     image: busybox
