@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "6"
+  - "4.4.2"
+
+services:
+  - docker
+
+before_install:
+  - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+  - npm i -g yarn@0.16.1;
+  - npm cache clean
+  - docker build --tag travis .
+  - docker run travis

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/UKHomeOffice/hello-peeps#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "snyk": "^1.19.1"
   }
 }
